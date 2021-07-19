@@ -1,0 +1,8 @@
+CORE_REPO: "https://gitlab.moco.com/epo-ipos/core.git"
+
+GIT_NAME: "zhuojun.feng"
+GIT_PWD: "54coder."
+GIR_URL: "http://{{GIT_NAME}}:{{GIT_PWD}}@gitlab.moco.com/epo-ipos/core.git"
+GIT_DIR: "${ipos_ansible}/ansible_code/"
+
+CODE_VERSION: "uat"

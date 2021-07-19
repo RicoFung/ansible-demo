@@ -1,0 +1,13 @@
+---
+# git clone or pull code
+- name: ====== 1 ======== git clone or pull code
+  git:
+    repo: "{{GIR_URL}}"
+    dest: "{{GIT_DIR}}"
+    version: "{{CODE_VERSION}}"
+    force: yes
+    remote: origin
+    clone: yes
+    update: yes
+  register: pull_result
+  tags: pull

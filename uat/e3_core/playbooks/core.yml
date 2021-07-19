@@ -1,0 +1,13 @@
+---
+
+- name: pull & build
+  hosts: localhost
+  remote_user: ansible
+  vars_files: group_vars/vars
+  roles:
+      # 拉取代码
+    - role: pull
+      when: operation == 'deploy'
+      # 编译打包文件
+    - role: build
+      when: operation == 'deploy'
