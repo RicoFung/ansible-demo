@@ -8,6 +8,6 @@ BASE_DIR=$2
 deploy_env=$3
 
 export ipos_ansible=/data/epo-ansible/ipos-ansible
-cd ${ipos_ansible}/ansible_scripts && git pull && git checkout develop
+cd ${ipos_ansible}/ansible_scripts/${deploy_env} && git pull
 # 执行ansible操作
-ansible-playbook -i ${deploy_env}/${BASE_DIR}/playbooks/core.yml -f 1 --extra-vars "group=$group operation=$operation deploy_env=$deploy_env ipos_ansible=$ipos_ansible"
+ansible-playbook -i ${BASE_DIR}/hosts ${BASE_DIR}/playbooks/core.yml -f 1 --extra-vars "operation=$operation deploy_env=$deploy_env ipos_ansible=$ipos_ansible"
