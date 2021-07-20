@@ -7,7 +7,7 @@
   roles:
       # 拉取代码
     - role: pull
-      when: operation == 'deploy'
+      when: EV_OPERATION == 'deploy'
       # 编译打包文件
     - role: build
-      when: operation == 'deploy'
+      when: EV_OPERATION == 'deploy'

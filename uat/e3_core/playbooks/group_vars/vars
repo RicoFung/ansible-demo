@@ -1,9 +1,7 @@
-CORE_REPO: "https://gitlab.moco.com/epo-ipos/core.git"
+GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/core.git"
 
-GIT_NAME: "zhuojun.feng"
-GIT_PWD: "54coder."
-GIR_URL: "http://{{GIT_NAME}}:{{GIT_PWD}}@gitlab.moco.com/epo-ipos/core.git"
-GIT_DIR: "${ipos_ansible}/ansible_code/core"
-POM_DIR: "${ipos_ansible}/ansible_code/core/bs2.middleware"
-
-CODE_VERSION: "uat"
+GV_GIT_NAME: "zhuojun.feng"
+GV_GIT_PWD: "54coder."
+GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/core.git"
+GV_GIT_DIR: "${IPOS_ANSIBLE}/ansible_code/core"
+GV_POM_DIR: "${IPOS_ANSIBLE}/ansible_code/core/bs2.middleware"

@@ -10,7 +10,7 @@
 
 # 编译代码 - 如果代码有更新的话  && source ~/bash_profile
 - name: ====== 4 ======== build project
-  shell: source /etc/profile && source ~/.bash_profile  && mvn clean package -P{{deploy_env}} -Dmaven.test.skip=true
+  shell: source /etc/profile && source ~/.bash_profile  && mvn clean package -P{{EV_ENV}} -Dmaven.test.skip=true
   args:
-    chdir: "{{POM_DIR}}"
+    chdir: "{{GV_POM_DIR}}"
   #when: pull_result.before != pull_result.after
