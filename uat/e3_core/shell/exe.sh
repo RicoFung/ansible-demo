@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 参数 1 执行的操作 deploy | stop | restart
+# 参数 1 执行的操作 deploy
 operation=$1
 # 参数 2 工作目录
 BASE_DIR=$2

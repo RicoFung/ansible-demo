@@ -1,0 +1,16 @@
+---
+# get start build time
+- name: ====== 2 ======== get start build time
+  shell: date +%Y%m%d_%H%M%S
+  register: build_time
+
+# 删除本地仓库旧版本包
+- name: ====== 3 ======== remove old repo
+  shell: source /etc/profile && source ~/.bash_profile  && rm -rf /home/playbook/.m2/repository/com/baison/bs2*
+
+# 编译代码 - 如果代码有更新的话  && source ~/bash_profile
+- name: ====== 4 ======== build project
+  shell: source /etc/profile && source ~/.bash_profile  && mvn clean package -P{{deploy_env}} -Dmaven.test.skip=true
+  args:
+    chdir: "{{POM_DIR}}"
+  #when: pull_result.before != pull_result.after
