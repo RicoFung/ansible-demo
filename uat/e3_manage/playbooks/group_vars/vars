@@ -1,0 +1,11 @@
+GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/manage.git"
+
+GV_GIT_NAME: "zhuojun.feng"
+GV_GIT_PWD: "54coder."
+GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/manage.git"
+GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage"
+GV_POM_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage"
+
+GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage.web/target"
+GV_REMOTE_DIR: "/usr/local/middleware/manage/taobao-tomcat-7.0.59/deploy"
+GV_REMOTE_WAR_NAME: "e3MiddlewareManageWeb_asb.war"

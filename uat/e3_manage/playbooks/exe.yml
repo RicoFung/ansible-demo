@@ -1,0 +1,29 @@
+---
+
+- name: pull & build
+  hosts: localhost
+  remote_user: ansible
+  vars_files: group_vars/vars
+  roles:
+    # 拉取代码
+    - role: pull
+      when: EV_OPERATION == 'deploy'
+    # 编译打包
+    - role: build
+      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+      
+- name: server deploy | restart | stop | start
+  hosts: '{{EV_HOSTS}}'
+  roles:
+#    # 关闭应用
+#    - role: stop
+#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
+#    # 清理应用
+#    - role: clean
+#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+    # 上传应用
+#    - role: upload
+#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+#    # 启动应用
+#    - role: start
+#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
