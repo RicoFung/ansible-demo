@@ -12,4 +12,4 @@ BASE_DIR=$4
 export IPOS_ANSIBLE=/data/epo-ansible/ipos-ansible
 cd ${IPOS_ANSIBLE}/ansible_scripts/${ENV} && git pull
 # 执行ansible操作
-ansible-playbook -i ${BASE_DIR}/hosts ${BASE_DIR}/playbooks/core.yml -f 1 --extra-vars "EV_OPERATION=$OPERATION EV_ENV=$ENV EV_BRANCH=$BRANCH EV_IPOS_ANSIBLE=$IPOS_ANSIBLE"
+ansible-playbook -i ${BASE_DIR}/hosts ${BASE_DIR}/playbooks/exe.yml -f 1 --extra-vars "EV_OPERATION=$OPERATION EV_ENV=$ENV EV_BRANCH=$BRANCH EV_IPOS_ANSIBLE=$IPOS_ANSIBLE"
