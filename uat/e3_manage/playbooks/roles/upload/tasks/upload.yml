@@ -1,6 +1,6 @@
 ---
 # 上传文件到远程主机
-- name: ====== 5 ======== upload war to remote server
+- name: ====== 11 ======== upload war to remote server
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
