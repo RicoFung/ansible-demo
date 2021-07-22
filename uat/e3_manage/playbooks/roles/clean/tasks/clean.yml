@@ -3,4 +3,3 @@
 # 清理tomcat中的旧包
 - name: ====== 10 ======== remove old war in tomcat/deploy/
   shell: "rm -rf {{GV_REMOTE_TOMCAT_HOME}}/deploy/{{GV_WAR_NAME}}*"
-

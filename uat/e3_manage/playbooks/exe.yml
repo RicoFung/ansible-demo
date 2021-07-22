@@ -25,6 +25,6 @@
     # 上传应用
     - role: upload
       when: EV_OPERATION == 'publish'
-#    # 启动应用
-#    - role: start
-#      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
+    # 启动应用
+    - role: start
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
