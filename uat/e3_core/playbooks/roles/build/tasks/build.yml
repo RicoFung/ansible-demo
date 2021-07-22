@@ -10,7 +10,7 @@
 
 # 编译代码 - 如果代码有更新的话  && source ~/bash_profile
 - name: ====== 4 ======== build project
-  shell: source /etc/profile && source ~/.bash_profile  && mvn clean deploy -P{{EV_ENV}} -Dmaven.test.skip=true
+  shell: source /etc/profile && source ~/.bash_profile  && mvn clean deploy -P{{EV_ENV}} --settings /data/app/maven3.5.4/apache-maven-3.5.4/conf/settings_ipos.xml -Dmaven.test.skip=true
   args:
     chdir: "{{GV_POM_DIR}}"
   #when: pull_result.before != pull_result.after
