@@ -17,8 +17,8 @@
   vars_files: group_vars/vars
   roles:
 #    # 关闭应用
-#    - role: stop
-#      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
+    - role: stop
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
 #    # 清理应用
 #    - role: clean
 #      when: EV_OPERATION == 'publish'
