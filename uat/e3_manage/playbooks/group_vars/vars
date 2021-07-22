@@ -10,5 +10,5 @@ GV_REMOVE_OLD_PACKAGE: "/home/playbook/.m2/repository/com/baison/e3.middleware.m
 
 GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage.web/target/e3MiddlewareManageWeb.war"
 GV_REMOTE_TOMCAT_HOME: "/usr/local/middleware/manage/taobao-tomcat-7.0.59"
-GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy/"
+GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"
 GV_REMOTE_WAR_NAME: "e3MiddlewareManageWeb_asb.war"
