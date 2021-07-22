@@ -10,21 +10,21 @@
       when: EV_OPERATION == 'deploy'
     # 编译打包
     - role: build
-      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+      when: EV_OPERATION == 'deploy'
       
-- name: server deploy | restart | stop | start
+- name: upload | restart | stop | start
   hosts: '{{EV_HOSTS}}'
   vars_files: group_vars/vars
   roles:
 #    # 关闭应用
 #    - role: stop
-#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
+#      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
 #    # 清理应用
 #    - role: clean
-#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+#      when: EV_OPERATION == 'publish'
     # 上传应用
     - role: upload
-      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+      when: EV_OPERATION == 'publish'
 #    # 启动应用
 #    - role: start
-#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
+#      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'

@@ -6,6 +6,6 @@ GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/mana
 GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage"
 GV_POM_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage"
 
-GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage.web/target"
-GV_REMOTE_DIR: "/usr/local/middleware/manage/taobao-tomcat-7.0.59/deploy"
+GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/manage/e3.middleware.manage.web/target/e3MiddlewareManageWeb.war"
+GV_REMOTE_DIR: "/usr/local/middleware/manage/taobao-tomcat-7.0.59/deploy/"
 GV_REMOTE_WAR_NAME: "e3MiddlewareManageWeb_asb.war"
