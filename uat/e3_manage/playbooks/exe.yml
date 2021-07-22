@@ -14,6 +14,7 @@
       
 - name: server deploy | restart | stop | start
   hosts: '{{EV_HOSTS}}'
+  vars_files: group_vars/vars
   roles:
 #    # 关闭应用
 #    - role: stop
