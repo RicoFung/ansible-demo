@@ -22,8 +22,8 @@
 #    - role: clean
 #      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
     # 上传应用
-#    - role: upload
-#      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
+    - role: upload
+      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart'
 #    # 启动应用
 #    - role: start
 #      when: EV_OPERATION == 'deploy' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
