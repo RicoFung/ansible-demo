@@ -1,0 +1,19 @@
+GV_MODULE_NAME: "stock.clothes"
+
+GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME | replace('.','_')}}.git"
+
+GV_GIT_NAME: "zhuojun.feng"
+GV_GIT_PWD: "54coder."
+GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME | replace('.','_')}}.git"
+GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
+GV_POM_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/e3.middleware.{{GV_MODULE_NAME}}"
+
+GV_REMOVE_OLD_PACKAGE: "/home/playbook/.m2/repository/com/baison/e3.middleware.{{GV_MODULE_NAME}}*"
+
+GV_WAR_NAME: "e3MiddlewareManageWeb"
+GV_WAR_FILE: "{{GV_WAR_NAME}}.war"
+
+GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/e3.middleware.{{GV_MODULE_NAME}}.web/target/{{GV_WAR_FILE}}"
+GV_REMOTE_TOMCAT_HOME: "/usr/local/middleware/{{GV_MODULE_NAME}}/taobao-tomcat-7.0.59"
+GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"
+GV_REMOTE_WAR_NAME: "{{GV_WAR_FILE}}"
