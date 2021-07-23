@@ -6,7 +6,7 @@
 
 # 删除本地仓库旧版本包
 - name: ====== 3 ======== remove old package in local repository
-  shell: source /etc/profile && source ~/.bash_profile  && rm -rf /home/playbook/.m2/repository/com/baison/bs2*
+  shell: source /etc/profile && source ~/.bash_profile  && rm -rf {{GV_REMOVE_OLD_PACKAGE}}
 
 # 编译代码 - 如果代码有更新的话  && source ~/bash_profile
 - name: ====== 4 ======== build project
