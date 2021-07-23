@@ -1,4 +1,4 @@
-GV_MODULE_NAME: "business"
+GV_MODULE_NAME: "stock"
 
 GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
 
