@@ -14,6 +14,6 @@ GV_WAR_NAME: "e3MiddlewareBusinessWeb"
 GV_WAR_FILE: "{{GV_WAR_NAME}}.war"
 
 GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/e3.middleware.{{GV_MODULE_NAME}}.web/target/{{GV_WAR_FILE}}"
-GV_REMOTE_TOMCAT_HOME: "/usr/local/middleware/{{GV_MODULE_NAME | replace('.clothes','')}}/taobao-tomcat-7.0.59"
+GV_REMOTE_TOMCAT_HOME: "/home/middleware/{{GV_MODULE_NAME | replace('.clothes','')}}/taobao-tomcat-7.0.59"
 GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"
 GV_REMOTE_WAR_NAME: "{{GV_WAR_FILE}}"
