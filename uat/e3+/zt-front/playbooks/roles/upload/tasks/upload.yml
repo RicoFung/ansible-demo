@@ -4,7 +4,7 @@
   unarchive:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
-    remote_src: yes
+    remote_src: no
   with_items:
   - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
