@@ -8,17 +8,10 @@
   with_items:
   - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
-#---
-# 上传文件到远程主机
-#- name: ====== 11 ======== upload package to remote server
-#  copy:
-#    src: "{{ item.src }}"
-#    dest: "{{ item.dest }}"
-#    remote_src: no
-#  with_items:
-#  - { src: "{{GV_TARGET_ZIP_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_ZIP_FILE}}" }
+# 解压
+- name: ====== 12 ======== unzip the package
+  shell: "source /etc/profile && source ~/.bash_profile && unzip -o -d {{GV_REMOTE_DIR}} {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
   
-  
-## 删除本地仓库旧版本包
-#- name: ====== 12 ======== unzip the package
-#  shell: source /etc/profile && source ~/.bash_profile  && unzip -o -d /home/sunny myfile.zip
+# 更新config.js
+- name: ====== 13 ======== update config.js by env
+  shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_*.js"
