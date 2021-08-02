@@ -10,5 +10,6 @@
   archive:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
+    remote_src: no
   with_items:
   - { src: "{{GV_GIT_DIR}}", dest: "{{GV_TARGET_ZIP_PATH}}" } 
