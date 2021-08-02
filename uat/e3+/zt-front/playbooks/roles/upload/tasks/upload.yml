@@ -1,7 +1,7 @@
 ---
 # 上传文件到远程主机
 - name: ====== 11 ======== upload package to remote server
-  unarchive:
+  copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     remote_src: no
