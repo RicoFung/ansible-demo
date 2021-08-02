@@ -7,7 +7,7 @@
 # 本地打包为zip
 - name: ====== 3 ======== package as zip
   archive:
-    src: "{{ item.src }}"
+    path: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
   - { src: "{{GV_GIT_DIR}}", dest: "{{GV_TARGET_ZIP_PATH}}" } 
