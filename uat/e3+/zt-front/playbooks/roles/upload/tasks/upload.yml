@@ -6,7 +6,7 @@
     dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
-  - { src: "{{GV_TARGET_ZIP_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
+  - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
 #---
 # 上传文件到远程主机

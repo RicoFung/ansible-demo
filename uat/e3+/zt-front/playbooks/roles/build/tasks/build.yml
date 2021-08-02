@@ -10,4 +10,4 @@
     path: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-  - { src: "{{GV_GIT_DIR}}", dest: "{{GV_TARGET_ZIP_PATH}}" } 
+  - { src: "{{GV_GIT_DIR}}", dest: "{{GV_MODULE_PACKAGE_PATH}}" } 
