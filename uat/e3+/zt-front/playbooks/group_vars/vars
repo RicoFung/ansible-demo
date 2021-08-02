@@ -1,0 +1,14 @@
+GV_MODULE_NAME: "zt-front"
+
+GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
+
+GV_GIT_NAME: "zhuojun.feng"
+GV_GIT_PWD: "54coder."
+GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
+GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
+
+GV_ZIP_FILE: "{{GV_MODULE_NAME}}.zip"
+GV_TARGET_ZIP_PATH: "{{GV_GIT_DIR}}/{{GV_ZIP_FILE}}"
+
+GV_REMOTE_TOMCAT_HOME: "/home/middleware/ui/taobao-tomcat-7.0.59"
+GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"

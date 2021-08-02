@@ -1,0 +1,9 @@
+---
+# get start build time
+- name: ====== 2 ======== get start build time
+  shell: date +%Y%m%d_%H%M%S
+  register: build_time
+
+# 本地打包为zip
+- name: ====== 3 ======== package as zip
+  shell: source /etc/profile && source ~/.bash_profile  && zip -r zt-front.zip {{GV_GIT_DIR}}
