@@ -15,9 +15,12 @@
     dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
-  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" } 
+  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
+  
+# 删除zip包
+- name: ====== 13 ======== remove package
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
   
 # 更新config.js
-- name: ====== 13 ======== update config.js by env
+- name: ====== 14 ======== update config.js by env
   shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_*.js"
