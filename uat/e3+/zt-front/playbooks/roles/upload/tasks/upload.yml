@@ -16,8 +16,7 @@
     remote_src: yes
   with_items:
   - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" } 
-#- name: ====== 12 ======== unzip the package
-#  shell: "source /etc/profile && source ~/.bash_profile && cd {{GV_REMOTE_DIR}} && unzip -o {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}} -d {{GV_REMOTE_DIR}}"
+  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
   
 # 更新config.js
 - name: ====== 13 ======== update config.js by env
