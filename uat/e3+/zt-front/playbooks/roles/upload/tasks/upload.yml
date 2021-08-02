@@ -8,7 +8,7 @@
   with_items:
   - { src: "{{GV_TARGET_ZIP_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
----
+#---
 # 上传文件到远程主机
 #- name: ====== 11 ======== upload package to remote server
 #  copy:
