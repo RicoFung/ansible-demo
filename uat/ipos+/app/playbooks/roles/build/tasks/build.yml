@@ -7,10 +7,6 @@
 # npm build
 - name: ====== 3 ======== npm build
   shell: "
-  source /etc/profile 
-  && 
-  source ~/.bash_profile 
-  && 
   export ENODE_HOME=/data/app/node-v10.9.0-linux-x64
   &&
   export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$NODE_HOME/bin
