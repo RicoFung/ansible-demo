@@ -8,3 +8,4 @@ GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/ipos
 GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
 
 GV_REMOTE_DIR: "/home/data/www"
+GV_REMOTE_BACKUP_DIR: "/home/data/backup"
