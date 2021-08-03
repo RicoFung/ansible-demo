@@ -8,5 +8,5 @@
 - name: ====== 3 ======== npm build
   npm:
     path: "{{GV_GIT_DIR}}"
-    executable: "{{GV_NODE_PATH}}"
+    executable: "{{GV_NODE_HOME}}"
     state: present
