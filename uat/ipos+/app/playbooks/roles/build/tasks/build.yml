@@ -15,4 +15,4 @@
     path: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-  - { src: "{{GV_GIT_DIR}}/AppPublish", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
+  - { src: "{{GV_GIT_DIR}}/AppPublish/*", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
