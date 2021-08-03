@@ -4,13 +4,7 @@
   shell: date +%Y%m%d_%H%M%S
   register: build_time
 
-# npm build
-  environment:
-#    NVM_DIR: /var/local/nvm
-    PATH: "{{GV_NODE_HOME}}/bin:{{ ansible_env.PATH }}"
-
 - name: ====== 3 ======== npm build
-  npm:
-    path: "{{GV_GIT_DIR}}"
-    executable: "{{GV_NODE_HOME}}"
-    state: present
+  shell: source ~/.bash_profile && npm run build
+  args:
+    chdir: "{{GV_GIT_DIR}}"
