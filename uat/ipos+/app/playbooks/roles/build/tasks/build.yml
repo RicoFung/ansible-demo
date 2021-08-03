@@ -6,7 +6,9 @@
 
 # npm build
 - name: ====== 3 ======== npm build
-  npm:
-    path: "{{GV_GIT_DIR}}"
-    executable: "{{GV_NODE_HOME}}"
-    state: present
+  command: "chdir={{GV_GIT_DIR}} {{item}}"
+  with_items:
+    - export ENODE_HOME={{GV_NODE_HOME}}
+    - export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$NODE_HOME/bin
+    - npm install
+    - npm run build
