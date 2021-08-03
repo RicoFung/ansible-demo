@@ -6,6 +6,18 @@
 
 # npm build
 - name: ====== 3 ======== npm build
-  npm:
-    name: app-script
-    path: "{{GV_GIT_DIR}}"
+  shell: "
+  source /etc/profile 
+  && 
+  source ~/.bash_profile 
+  && 
+  export ENODE_HOME=/data/app/node-v10.9.0-linux-x64
+  &&
+  export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$NODE_HOME/bin
+  &&
+  cd {{GV_GIT_DIR}}
+  &&
+  npm install
+  &&
+  npm run build
+  "
