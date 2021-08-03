@@ -8,3 +8,11 @@
   shell: "source /etc/profile && source ~/.bash_profile && npm install && npm run build"
   args:
     chdir: "{{GV_GIT_DIR}}"
+
+# 本地打包为zip
+- name: ====== 4 ======== package as zip
+  archive:
+    path: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+  - { src: "{{GV_GIT_DIR}}/AppPublish", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
