@@ -8,4 +8,4 @@
 - name: ====== 3 ======== npm build
   npm:
     name: app-script
-    path: {{GV_GIT_DIR}}
+    path: "{{GV_GIT_DIR}}"
