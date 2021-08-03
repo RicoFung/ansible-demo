@@ -1,0 +1,10 @@
+GV_MODULE_NAME: "mid"
+GV_MODULE_PACKAGE: "{{GV_MODULE_NAME}}.zip"
+GV_MODULE_PACKAGE_PATH: "{{GV_GIT_DIR}}/{{GV_MODULE_PACKAGE}}"
+
+GV_GIT_NAME: "zhuojun.feng"
+GV_GIT_PWD: "54coder."
+GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/ipos-plus-{{GV_MODULE_NAME}}.git"
+GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
+
+GV_REMOTE_DIR: "/home/data/www"
