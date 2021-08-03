@@ -10,4 +10,4 @@ GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
 GV_REMOTE_DIR: "/home/data/www"
 GV_REMOTE_BACKUP_DIR: "/home/data/backup"
 
-GV_NODE_HOME:"/data/app/node-v10.9.0-linux-x64"
+GV_NODE_HOME: "/data/app/node-v10.9.0-linux-x64"
