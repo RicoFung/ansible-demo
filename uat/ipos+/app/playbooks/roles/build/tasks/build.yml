@@ -1,0 +1,11 @@
+---
+# get start build time
+- name: ====== 2 ======== get start build time
+  shell: date +%Y%m%d_%H%M%S
+  register: build_time
+
+# npm build
+- name: ====== 3 ======== npm build
+  npm:
+    name: app-script
+    path: {{GV_GIT_DIR}}
