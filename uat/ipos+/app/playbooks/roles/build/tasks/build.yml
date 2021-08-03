@@ -7,6 +7,6 @@
 # npm build
 - name: ====== 3 ======== npm build
   npm:
-    path: {{GV_GIT_DIR}}
-    executable: {{GV_NODE_PATH}}
+    path: "{{GV_GIT_DIR}}"
+    executable: "{{GV_NODE_PATH}}"
     state: present
