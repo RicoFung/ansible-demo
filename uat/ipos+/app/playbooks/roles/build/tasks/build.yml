@@ -5,6 +5,6 @@
   register: build_time
 
 - name: ====== 3 ======== npm build
-  shell: source ~/.bash_profile && npm run build
+  shell: "source /etc/profile && source ~/.bash_profile && npm install && npm run build"
   args:
     chdir: "{{GV_GIT_DIR}}"
