@@ -5,10 +5,12 @@
   register: build_time
 
 # npm build
+  environment:
+#    NVM_DIR: /var/local/nvm
+    PATH: "{{GV_NODE_HOME}}/bin:{{ ansible_env.PATH }}"
+
 - name: ====== 3 ======== npm build
-  command: "chdir={{GV_GIT_DIR}} {{item}}"
-  with_items:
-    - export ENODE_HOME={{GV_NODE_HOME}}
-    - export PATH=$PATH:$HOME/.local/bin:$HOME/bin:$NODE_HOME/bin
-    - npm install
-    - npm run build
+  npm:
+    path: "{{GV_GIT_DIR}}"
+    executable: "{{GV_NODE_HOME}}"
+    state: present
