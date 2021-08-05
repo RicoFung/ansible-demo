@@ -1,5 +1,5 @@
 ---
 
 # 清理远程旧包
-- name: ====== 4 ======== remove old package in /home/data/www
+- name: ====== 5 ======== remove old package in /home/data/www
   shell: "rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
