@@ -8,6 +8,8 @@
   shell: "source /etc/profile && source ~/.bash_profile && npm install && npm run build"
   args:
     chdir: "{{GV_GIT_DIR}}"
+  register: npm_bulid
+- debug: msg="{{npm_bulid.stdout_lines}}"
 
 # 本地打包为zip
 - name: ====== 4 ======== package as tar.gz
