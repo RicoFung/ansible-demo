@@ -1,0 +1,5 @@
+---
+
+# 启动应用
+- name: ====== 15 ======== start application
+  shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
