@@ -1,9 +1,9 @@
 ---
 
 # 清理远程旧包
+#- name: ====== 5 ======== remove old package from remote:{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}
+#  file:
+#    path: "{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
+#    state: absent
 - name: ====== 5 ======== remove old package from remote:{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}
-  file:
-    path: "{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
-    state: absent
-#- name: ====== 5 ======== remove old package in /home/data/www
-#  shell: "rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
+  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
