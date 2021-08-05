@@ -11,10 +11,11 @@
 # 解压新包
 - name: ====== 7 ======== uncompress new package
   unarchive:
-    src: {{GV_MODULE_PACKAGE}}
-    dest: {{GV_REMOTE_DIR}}
-  args:
-    chdir: "{{GV_REMOTE_DIR}}"
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    remote_src: yes
+  with_items:
+  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
 #- name: ====== 7 ======== uncompress new package
 #  shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}}"
 #  args:
