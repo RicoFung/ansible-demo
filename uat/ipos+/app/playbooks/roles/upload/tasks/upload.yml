@@ -13,19 +13,16 @@
   shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
-## 解压新包
-#- name: ====== 7 ======== uncompress new package
-#  shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
-#  args:
-#    chdir: "{{GV_REMOTE_DIR}}"
 ##- name: ====== 7 ======== uncompress new package
 ##  shell: "tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
 ##  args:
 ##    chdir: "{{GV_REMOTE_DIR}}"
 #  
-## 删除新包
-#- name: ====== 8 ======== remove new package
-#  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+# 删除新包
+- name: ====== 8 ======== remove new package
+  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+  args:
+    chdir: "{{GV_REMOTE_DIR}}"
 #  
 ## 更新config.js
 #- name: ====== 9 ======== update config.js by env
