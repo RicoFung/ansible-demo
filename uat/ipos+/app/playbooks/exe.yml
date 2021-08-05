@@ -17,8 +17,8 @@
   vars_files: group_vars/vars
   roles:
     # 清理应用
-#    - role: clean
-#      when: EV_OPERATION == 'publish'
+    - role: clean
+      when: EV_OPERATION == 'publish'
     # 上传应用
     - role: upload
       when: EV_OPERATION == 'publish'

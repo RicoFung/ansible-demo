@@ -1,6 +1,6 @@
 ---
-# 上传包
-- name: ====== 5 ======== upload package to remote server
+# 上传新包
+- name: ====== 5 ======== upload new package to remote server
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -8,27 +8,23 @@
   with_items:
   - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
-## 解压包
-#- name: ====== 6 ======== unzip package
-#  unarchive:
-#    src: "{{ item.src }}"
-#    dest: "{{ item.dest }}"
-#    remote_src: yes
-#  with_items:
-#  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
+# 解压新包
+- name: ====== 6 ======== unzip new package
+  unarchive:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    remote_src: yes
+  with_items:
+  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
   
-## 删除包
-#- name: ====== 7 ======== remove package
-#  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+# 删除新包
+- name: ====== 7 ======== remove new package
+  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
   
-# 更新config.php
-#- name: ====== 8 ======== update src/script/config.js by env
-#  shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.php {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.php && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.php"
-
 # 更新config.js
 - name: ====== 8 ======== update config.js by env
   shell: |
-    echo "hi"
-    echo "hello"
+    cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.js
+    rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.js
   register: shell_output
 - debug: msg="{{shell_output.stdout_lines}}"
