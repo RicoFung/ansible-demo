@@ -10,21 +10,21 @@
   
 # 解压新包
 - name: ====== 7 ======== uncompress new package
-  shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}}"
+  unarchive:
+    src: {{GV_MODULE_PACKAGE}}
+    dest: {{GV_REMOTE_DIR}}
   args:
     chdir: "{{GV_REMOTE_DIR}}"
-##- name: ====== 7 ======== uncompress new package
-##  shell: "tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
-##  args:
-##    chdir: "{{GV_REMOTE_DIR}}"
+#- name: ====== 7 ======== uncompress new package
+#  shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}}"
+#  args:
+#    chdir: "{{GV_REMOTE_DIR}}"
 
 # 重命名新包
 - name: ====== 8 ======== rename new package
   shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
-  register: rename
-- debug: msg="{{rename.stdout_lines}}"
     
 #  
 # 删除新包
