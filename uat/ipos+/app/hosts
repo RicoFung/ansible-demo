@@ -1,2 +1,1 @@
-[uat-app]
-uat_app_1 ansible_ssh_port=22 ansible_ssh_host=10.12.203.87 ansible_ssh_user=root
+uat ansible_ssh_port=22 ansible_ssh_host=10.12.203.87 ansible_ssh_user=root

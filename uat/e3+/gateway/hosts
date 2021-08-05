@@ -1,2 +1,1 @@
-[uat-gateway]
-uat_gateway_1 ansible_ssh_port=22 ansible_ssh_host=10.12.203.85 ansible_ssh_user=root
+uat ansible_ssh_port=22 ansible_ssh_host=10.12.203.85 ansible_ssh_user=root
