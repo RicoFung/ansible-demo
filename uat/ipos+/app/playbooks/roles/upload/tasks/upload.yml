@@ -23,6 +23,8 @@
   shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
+  register: rename
+- debug: msg="{{rename.stdout_lines}}"
     
 #  
 # 删除新包
