@@ -15,7 +15,7 @@
     dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
-  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
+  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}" }
   
 # 删除新包
 - name: ====== 7 ======== remove new package
