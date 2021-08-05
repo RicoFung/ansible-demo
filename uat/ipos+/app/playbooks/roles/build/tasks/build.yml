@@ -11,15 +11,8 @@
   register: npm_bulid
 - debug: msg="{{npm_bulid.stdout_lines}}"
 
-# 本地打包为zip
-- name: ====== 4 ======== package as tar.gz
+# 本地打包
+- name: ====== 4 ======== compress AppPublish/ as tar.gz
   shell: |
     cd {{GV_GIT_DIR}}
     tar -zcvf {{GV_MODULE_PACKAGE}} {{GV_MODULE_DIR}}
-    
-#- name: ====== 4 ======== package as zip
-#  archive:
-#    path: "{{ item.src }}"
-#    dest: "{{ item.dest }}"
-#  with_items:
-#  - { src: "{{GV_GIT_DIR}}/AppPublish/*", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
