@@ -10,11 +10,15 @@
   
 # 解压新包
 - name: ====== 7 ======== unzip new package
-  unarchive:
-    src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
-    dest: "{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}"
-    creates: "{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}"
-    remote_src: yes
+  shell: |
+    cd {{GV_REMOTE_DIR}}
+    tar -zxvf {{GV_MODULE_PACKAGE}}
+    mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}
+#- name: ====== 7 ======== unzip new package
+#  unarchive:
+#    src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+#    dest: "{{GV_REMOTE_DIR}}"
+#    remote_src: yes
 #- name: ====== 7 ======== unzip new package
 #  unarchive:
 #    src: "{{ item.src }}"

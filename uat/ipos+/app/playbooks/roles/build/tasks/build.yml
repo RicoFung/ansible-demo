@@ -10,9 +10,14 @@
     chdir: "{{GV_GIT_DIR}}"
 
 # 本地打包为zip
-- name: ====== 4 ======== package as zip
-  archive:
-    path: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  with_items:
-  - { src: "{{GV_GIT_DIR}}/AppPublish/*", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
+- name: ====== 4 ======== package as tar.gz
+  shell: |
+    cd {{GV_MODULE_PACKAGE_PATH}}
+    tar -zcvf {{GV_MODULE_PACKAGE}} {{GV_MODULE_DIR}}
+    
+#- name: ====== 4 ======== package as zip
+#  archive:
+#    path: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#  with_items:
+#  - { src: "{{GV_GIT_DIR}}/AppPublish/*", dest: "{{GV_MODULE_PACKAGE_PATH}}" }  
