@@ -22,10 +22,10 @@
 #    chdir: "{{GV_REMOTE_DIR}}"
 
 # 重命名新包
-- name: ====== 8 ======== rename new package
-  shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
-  args:
-    chdir: "{{GV_REMOTE_DIR}}"
+#- name: ====== 8 ======== rename new package
+#  shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
+#  args:
+#    chdir: "{{GV_REMOTE_DIR}}"
     
 #  
 # 删除新包
