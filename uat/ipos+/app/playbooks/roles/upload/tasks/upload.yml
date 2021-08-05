@@ -19,8 +19,8 @@
 ##    chdir: "{{GV_REMOTE_DIR}}"
 #  
 # 删除新包
-- name: ====== 8 ======== remove new package
-  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+#- name: ====== 8 ======== remove new package
+#  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
 #  
 ## 更新config.js
 #- name: ====== 9 ======== update config.js by env
