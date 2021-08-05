@@ -10,11 +10,13 @@
   
 # 解压新包
 - name: ====== 7 ======== uncompress new package
-  shell: |
-    tar -zxvf {{GV_MODULE_PACKAGE}}
-    mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}
+  shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
+#- name: ====== 7 ======== uncompress new package
+#  shell: "tar -zxvf {{GV_MODULE_PACKAGE}} && mv {{GV_MODULE_DIR}} {{GV_MODULE_NAME}}"
+#  args:
+#    chdir: "{{GV_REMOTE_DIR}}"
   
 # 删除新包
 - name: ====== 8 ======== remove new package
@@ -22,11 +24,9 @@
   
 # 更新config.js
 - name: ====== 9 ======== update config.js by env
-  shell: |
-    cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.js
-    rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.js
+  shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.js"
   
 # 更新首页背景图
 - name: ====== 10 ======== update background image if env not in '78' and '79'
-  shell: "mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
+  shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
   when: ({{EV_ENV}} != "78") and ({{EV_ENV}} != "79")
