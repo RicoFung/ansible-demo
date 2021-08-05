@@ -29,4 +29,4 @@
 # 更新首页背景图
 - name: ====== 10 ======== update background image if env not in '78' and '79'
   shell: "mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
-  when: ({{EV_ENV}} != "78") and ({{EN_ENV}} != "79")
+  when: ({{EV_ENV}} != "78") and ({{EV_ENV}} != "79")
