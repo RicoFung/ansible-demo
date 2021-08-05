@@ -13,6 +13,6 @@
 
 # 本地打包
 - name: ====== 4 ======== compress AppPublish/ as tar.gz
-  shell: |
-    cd {{GV_GIT_DIR}}
-    tar -zcvf {{GV_MODULE_PACKAGE}} {{GV_MODULE_DIR}}
+  shell: "source /etc/profile && source ~/.bash_profile && tar -zcvf {{GV_MODULE_PACKAGE}} {{GV_MODULE_DIR}}"
+  args:
+    chdir: "{{GV_GIT_DIR}}"

@@ -1,6 +1,6 @@
 ---
 # 上传新包
-- name: ====== 6 ======== upload new package to remote server
+- name: ====== 6 ======== upload new package to remote:{{GV_REMOTE_DIR}}
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -25,5 +25,8 @@
   shell: |
     cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.js
     rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.js
-  register: shell_output
-- debug: msg="{{shell_output.stdout_lines}}"
+  
+# 更新首页背景图
+- name: ====== 10 ======== update background image if env not in '78' or '79'
+  shell: "mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
+  when: ({{EV_ENV}} != "78") and ({{EN_ENV}} != "79")
