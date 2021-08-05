@@ -9,13 +9,6 @@
   - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   
 # 解压新包
-#- name: ====== 7 ======== uncompress new package
-#  unarchive:
-#    src: "{{ item.src }}"
-#    dest: "{{ item.dest }}"
-#    remote_src: yes
-#  with_items:
-#  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
 - name: ====== 7 ======== uncompress new package
   shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_MODULE_PACKAGE}}"
   args:
@@ -38,4 +31,4 @@
 # 更新首页背景图
 - name: ====== 10 ======== update background image if env not in '78' and '79'
   shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
-  when: ({{EV_ENV}} != "78") and ({{EV_ENV}} != "79")
+  when: EV_ENV != '78' and EV_ENV != '79'
