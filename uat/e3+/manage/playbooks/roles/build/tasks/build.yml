@@ -10,7 +10,7 @@
 
 # 编译代码 - 如果代码有更新的话  && source ~/bash_profile
 - name: ====== 4 ======== build project
-  shell: source /etc/profile && source ~/.bash_profile && mvn clean deploy -P{{EV_HOSTS}} --settings {{EV_IPOS_ANSIBLE}}/ansible_scripts/{{EV_ENV}}/settings_ipos.xml -Dmaven.test.skip=true
+  shell: source /etc/profile && source ~/.bash_profile && mvn clean deploy -P{{EV_PROFILE}} --settings {{EV_IPOS_ANSIBLE}}/ansible_scripts/{{EV_ANSIBLE_ENV}}/settings_ipos.xml -Dmaven.test.skip=true
   args:
     chdir: "{{GV_POM_DIR}}"
   #when: pull_result.before != pull_result.after
