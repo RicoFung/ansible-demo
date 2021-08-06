@@ -1,0 +1,9 @@
+---
+# 备份
+- name: ====== -1 ======== backup
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    remote_src: no
+  with_items:
+  - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_WAR_FILE}}" }

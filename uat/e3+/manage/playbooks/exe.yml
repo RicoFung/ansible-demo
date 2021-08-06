@@ -1,10 +1,13 @@
 ---
 
-- name: pull & build
+- name: backup & pull & build
   hosts: localhost
   remote_user: ansible
   vars_files: group_vars/vars
   roles:
+    # 备份应用
+    - role: backup
+      when: EV_OPERATION == 'deploy'
     # 拉取代码
     - role: pull
       when: EV_OPERATION == 'deploy'
