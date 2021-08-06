@@ -6,6 +6,6 @@
   
 # 打印启动日志
 - name: ====== 13 ======== tail log
-  shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out "
+  shell: "source /etc/profile && source ~/.bash_profile && nohup tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_log
 - debug: msg="{{tail_log.stdout_lines}}"
