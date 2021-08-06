@@ -1,11 +1,11 @@
 ---
 
 # 删除本地源码
-- name: ====== 0 ======== remove old sourcecode in {{GV_GIT_DIR}}
+- name: ====== 3 ======== remove old sourcecode in {{GV_GIT_DIR}}
   shell: source /etc/profile && source ~/.bash_profile  && rm -rf {{GV_GIT_DIR}}/*
   
 # git clone or pull code
-- name: ====== 1 ======== git clone or pull code
+- name: ====== 4 ======== git clone or pull code
   git:
     repo: "{{GV_GIR_URL}}"
     dest: "{{GV_GIT_DIR}}"

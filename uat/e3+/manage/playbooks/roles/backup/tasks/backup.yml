@@ -1,11 +1,12 @@
 ---
-- name: ====== -2 ======== create backup dir
+# 创建备份目录
+- name: ====== 1 ======== create backup dir
   file:
     path: "{{GV_BACKUP_DIR}}"
     state: directory
     
 # 备份
-- name: ====== -1 ======== backup
+- name: ====== 2 ======== backup
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
