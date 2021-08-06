@@ -2,7 +2,7 @@
 
 # 启动应用
 - name: ====== 12 ======== start application
-  shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
+  shell: "source /etc/profile && source ~/.bash_profile && echo '' > {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out & nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
   
 # 打印启动日志
 - name: ====== 13 ======== tail log
