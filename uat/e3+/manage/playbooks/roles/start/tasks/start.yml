@@ -7,9 +7,3 @@
 # 启动应用
 - name: ====== 13 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
-  
-# 打印启动日志
-- name: ====== 14 ======== tail log
-  shell: "source /etc/profile && source ~/.bash_profile && nohup tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
-  register: tail_log
-- debug: msg="{{tail_log.stdout_lines}}"
