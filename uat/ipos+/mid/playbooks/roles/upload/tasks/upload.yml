@@ -23,4 +23,4 @@
   
 # 更新config.php
 - name: ====== 8 ======== update src/script/config.js by env
-  shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_ENV}}.php {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.php && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.php"
+  shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_PROFILE}}.php {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.php && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.php"
