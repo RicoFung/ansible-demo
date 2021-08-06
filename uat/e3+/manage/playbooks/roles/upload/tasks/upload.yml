@@ -7,9 +7,3 @@
     remote_src: no
   with_items:
   - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
-  
-# 重命名新包
-- name: ====== 12 ======== rename new package
-  shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_WAR_FILE}} {{GV_WAR_NAME}}.war"
-  args:
-    chdir: "{{GV_REMOTE_DIR}}"

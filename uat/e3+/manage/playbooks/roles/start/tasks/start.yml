@@ -1,15 +1,15 @@
 ---
 
 # 清理catalina.out
-- name: ====== 13 ======== clean catalina.out
-  shell: "source /etc/profile && source ~/.bash_profile && nohup echo '' > {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
+- name: ====== 12 ======== clean catalina.out
+  shell: "source /etc/profile && source ~/.bash_profile && nohup echo \"\" > {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
 
 # 启动应用
-- name: ====== 14 ======== start application
+- name: ====== 13 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
   
 # 打印启动日志
-- name: ====== 15 ======== tail log
+- name: ====== 14 ======== tail log
   shell: "source /etc/profile && source ~/.bash_profile && nohup tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_log
 - debug: msg="{{tail_log.stdout_lines}}"
