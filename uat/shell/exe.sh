@@ -17,4 +17,4 @@ export IPOS_ANSIBLE=/data/epo-ansible/ipos-ansible
 cd ${IPOS_ANSIBLE}/ansible_scripts/${ANSIBLE_ENV} && git pull --force && git fetch --all && git reset --hard origin/${ANSIBLE_BRANCH} && git checkout ${ANSIBLE_BRANCH}
 
 # 执行ansible操作
-ansible-playbook -i ${BASE_DIR}/profiles ${BASE_DIR}/playbooks/exe.yml -f 1 --extra-vars "EV_PROFILE=$PROFILE EV_OPERATION=$OPERATION EV_ANSIBLE_ENV=$ANSIBLE_ENV EV_BRANCH=$BRANCH EV_IPOS_ANSIBLE=$IPOS_ANSIBLE"
+ansible-playbook -i ${BASE_DIR}/profile ${BASE_DIR}/playbooks/exe.yml -f 1 --extra-vars "EV_PROFILE=$PROFILE EV_OPERATION=$OPERATION EV_ANSIBLE_ENV=$ANSIBLE_ENV EV_BRANCH=$BRANCH EV_IPOS_ANSIBLE=$IPOS_ANSIBLE"
