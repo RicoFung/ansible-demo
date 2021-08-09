@@ -7,4 +7,4 @@
     remote_src: no
   with_items:
   - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_WAR_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_WAR_PATH}}{% else %}{{GV_TARGET_WAR_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
-  when: check_last_package_file.stat.exists or check_this_package_file.stat.exists
+  when: hostvars['localhost']['check_last_package_file'].stat.exists or hostvars['localhost']['check_this_package_file'].stat.exists
