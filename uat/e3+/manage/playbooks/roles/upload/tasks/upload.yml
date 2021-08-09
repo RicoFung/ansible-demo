@@ -1,12 +1,20 @@
 ---
 # 上传文件到远程主机
-- name: ====== 14 ======== publish new war to remote server
+- name: ====== 14 ======== upload war to remote server
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
+  - { src: "{{GV_TARGET_WAR_PATH if EV_OPERATION == \"publish\" else GV_BACKUP_WAR_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
+## 上传文件到远程主机
+#- name: ====== 14 ======== publish new war to remote server
+#  copy:
+#    src: "{{ item.src }}"
+#    dest: "{{ item.dest }}"
+#    remote_src: no
+#  with_items:
+#  - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
 #  when: EV_OPERATION == "publish"
 
 ## 回滚文件到远程主机  

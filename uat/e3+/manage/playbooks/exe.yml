@@ -27,10 +27,10 @@
       when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 上传应用
     - role: upload
-      when: EV_OPERATION == 'publish'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 回滚应用
-    - role: reload
-      when: EV_OPERATION == 'rollback'
+#    - role: reload
+#      when: EV_OPERATION == 'rollback'
     # 启动应用
     - role: start
       when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
