@@ -1,22 +1,22 @@
 ---
-# 检查上次的包是否存在
-- name: ====== 14_1 ======== check last package file exists
+# 检查旧包是否存在
+- name: ====== check last package file exists ========
   stat:
     path: "{{GV_BACKUP_WAR_PATH}}"
   register: check_last_package_file
 
-# 检查包是否存在
-- name: ====== 14_2 ======== check this package file exists
+# 检查新包是否存在
+- name: ====== check this package file exists ======== 
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_this_package_file
   
 # 上传文件到远程主机
-- name: ====== 14_3 ======== upload war to remote server
+- name: ====== 14 ======== upload war to remote server
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
   - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_WAR_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_WAR_PATH}}{% else %}{{GV_TARGET_WAR_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
-  when: (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists) or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists)
+  when: (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)

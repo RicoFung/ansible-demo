@@ -1,4 +1,15 @@
 ---
+# 检查旧包是否存在
+- name: ====== check last package file exists ========
+  stat:
+    path: "{{GV_BACKUP_WAR_PATH}}"
+  register: check_last_package_file
+
+# 检查新包是否存在
+- name: ====== check this package file exists ======== 
+  stat:
+    path: "{{GV_TARGET_WAR_PATH}}"
+  register: check_this_package_file
 
 # 获取远程服务器应用的pid
 - name: ====== 8 ======== grep application pid
@@ -11,7 +22,7 @@
   ignore_errors: yes
   with_items:
   - { pid: "{{application_processor.stdout}}"}
-  when: application_processor.stdout != ''
+  when: application_processor.stdout != '' and (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
 
 # 等待线程终止
 - name: ====== 10 ======== wait 60s for close processes
@@ -36,4 +47,4 @@
   ignore_errors: yes
   with_items:
   - { pid: "{{application_processor.stdout}}"}
-  when: application_processor.stdout != '' and force_kill_processor.stdout != ''
+  when: application_processor.stdout != '' and force_kill_processor.stdout != '' and (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
