@@ -14,7 +14,7 @@
 # 获取远程服务器应用的pid
 - name: ====== 8 ======== grep application pid
   shell: "ps -ef | grep -v grep | grep {{GV_REMOTE_TOMCAT_HOME}} | awk '{print $2}'"
-  register: application_processor
+  register: application_processor and EV_OPERATION== 'stop' or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
 
 # 发送终止信号
 - name: ====== 9 ======== send msg to kill processes
@@ -22,7 +22,7 @@
   ignore_errors: yes
   with_items:
   - { pid: "{{application_processor.stdout}}"}
-  when: application_processor.stdout != '' and (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
+  when: application_processor.stdout != '' and EV_OPERATION== 'stop' or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
 
 # 等待线程终止
 - name: ====== 10 ======== wait 60s for close processes
@@ -33,13 +33,13 @@
   ignore_errors: yes
   with_items:
   - { pid: "{{application_processor.stdout}}"}
-  when: application_processor.stdout != ''
+  when: application_processor.stdout != '' and EV_OPERATION== 'stop' or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
 
 # 再次判断线程是否存活着
 - name: ====== 11 ======== retry grep application pid
   shell: "ps -ef | grep -v grep | grep {{GV_REMOTE_TOMCAT_HOME}} | awk '{print $2}'"
   register: force_kill_processor
-  when: application_processor.stdout != ''
+  when: application_processor.stdout != '' and EV_OPERATION== 'stop' or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
 
 # 强制杀死进程
 - name: ====== 12 ======== force kill processes
@@ -47,4 +47,4 @@
   ignore_errors: yes
   with_items:
   - { pid: "{{application_processor.stdout}}"}
-  when: application_processor.stdout != '' and force_kill_processor.stdout != '' and (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
+  when: application_processor.stdout != '' and force_kill_processor.stdout != '' and EV_OPERATION== 'stop' or (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
