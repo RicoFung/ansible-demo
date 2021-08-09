@@ -22,4 +22,4 @@
 - name: ====== cancel exe ========
   fail:
     msg: "package is not exists!"
-  when: (EV_OPERATION== 'publish' and check_this_package_file.stat.exists) or (EV_OPERATION== 'rollback' and check_last_package_file.stat.exists)
+  when: (EV_OPERATION == 'publish' and check_this_package_file.stat.exists == false) or (EV_OPERATION == 'rollback' and check_last_package_file.stat.exists == false)
