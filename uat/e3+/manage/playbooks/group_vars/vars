@@ -14,8 +14,10 @@ GV_WAR_NAME: "e3MiddlewareManageWeb"
 GV_WAR_FILE: "{{GV_WAR_NAME}}.war"
 
 GV_BACKUP_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_backup/{{GV_MODULE_NAME}}/{{EV_PROFILE}}"
+GV_BACKUP_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_backup/{{GV_MODULE_NAME}}/{{EV_PROFILE}}/{{GV_WAR_FILE}}"
 
 GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/{{EV_PROFILE}}/e3.middleware.{{GV_MODULE_NAME}}.web/target/{{GV_WAR_FILE}}"
+
 GV_REMOTE_TOMCAT_HOME: "/usr/local/middleware/{{GV_MODULE_NAME}}/taobao-tomcat-7.0.59"
 GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"
 GV_REMOTE_WAR_NAME: "{{GV_WAR_FILE}}"

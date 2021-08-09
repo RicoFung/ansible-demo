@@ -21,13 +21,13 @@
   roles:
     # 关闭应用
     - role: stop
-      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
     # 清理应用
     - role: clean
-      when: EV_OPERATION == 'publish'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 上传应用
     - role: upload
-      when: EV_OPERATION == 'publish'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 启动应用
     - role: start
-      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
