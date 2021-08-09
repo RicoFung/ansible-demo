@@ -1,8 +1,4 @@
 ---
-- name: echo1
-  debug: msg={{check_last_package_file}}
-- name: echo2
-  debug: msg={{check_this_package_file}}
 - name: echo3
   debug: msg=hostvars['localhost']['check_last_package_file']
 - name: echo4
