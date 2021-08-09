@@ -1,6 +1,6 @@
 ---
 # 检查上次的包是否存在
-- name: ====== 0 ======== check last package file exists
+- name: ====== check last package file exists ========
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_last_package_file
