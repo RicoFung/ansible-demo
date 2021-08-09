@@ -14,9 +14,19 @@
     # 编译打包
     - role: build
       when: EV_OPERATION == 'deploy'
+    - role: check
+
+- name: check package exists
+  hosts: localhost
+  remote_user: ansible
+  vars_files: group_vars/vars
+  roles:
+    # 检测应用是否已打包
+    - role: check
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
       
 - name: upload | restart | stop | start
-  hosts: localhost,'{{EV_PROFILE}}'
+  hosts: '{{EV_PROFILE}}'
   vars_files: group_vars/vars
   roles:
     # 关闭应用
