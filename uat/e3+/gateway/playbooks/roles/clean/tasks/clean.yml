@@ -4,12 +4,20 @@
   stat:
     path: "{{GV_BACKUP_WAR_PATH}}"
   register: check_last_package_file
+  
+- name: ====== print check last package file exists ========
+  debug: 
+    msg: "{{check_last_package_file.stat.exists}}" 
 
 # 检查新包是否存在
 - name: ====== check this package file exists ======== 
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_this_package_file
+  
+- name: ====== print check this package file exists ========
+  debug: 
+    msg: "{{check_this_package_file.stat.exists}}" 
       
 # 清理tomcat中的旧包
 - name: ====== 13 ======== remove old war in tomcat/deploy/
