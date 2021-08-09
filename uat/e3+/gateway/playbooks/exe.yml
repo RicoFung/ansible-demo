@@ -16,7 +16,7 @@
       when: EV_OPERATION == 'deploy'
       
 - name: upload | restart | stop | start
-  hosts: '{{EV_PROFILE}}'
+  hosts: localhost,'{{EV_PROFILE}}'
   vars_files: group_vars/vars
   roles:
     # 关闭应用

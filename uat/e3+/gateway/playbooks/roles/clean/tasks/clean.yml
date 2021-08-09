@@ -1,25 +1,21 @@
 ---
 # 检查旧包是否存在
 - name: ====== check last package file exists ========
-  hosts: localhost
   stat:
     path: "{{GV_BACKUP_WAR_PATH}}"
   register: check_last_package_file
   
 - name: ====== print check last package file exists ========
-  hosts: localhost
   debug: 
     msg: "{{check_last_package_file.stat.exists}}" 
 
 # 检查新包是否存在
 - name: ====== check this package file exists ======== 
-  hosts: localhost
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_this_package_file
   
 - name: ====== print check this package file exists ========
-  hosts: localhost
   debug: 
     msg: "{{check_this_package_file.stat.exists}}" 
       
