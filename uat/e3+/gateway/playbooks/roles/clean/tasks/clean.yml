@@ -1,10 +1,17 @@
 ---
-- name: echo3
-  debug: msg={{hostvars['localhost']['check_last_package_file']}}
-- name: echo4
-  debug: msg={{hostvars['localhost']['check_this_package_file']}}
+# 检查上次的包是否存在
+- name: ====== 13_1 ======== check last package file exists
+  stat:
+    path: "{{GV_TARGET_WAR_PATH}}"
+  register: check_last_package_file
+
+# 检查包是否存在
+- name: ====== 13_2 ======== check this package file exists
+  stat:
+    path: "{{GV_TARGET_WAR_PATH}}"
+  register: check_this_package_file
       
 # 清理tomcat中的旧包
-- name: ====== 13 ======== remove old war in tomcat/deploy/
+- name: ====== 13_3 ======== remove old war in tomcat/deploy/
   shell: "rm -rf {{GV_REMOTE_TOMCAT_HOME}}/deploy/{{GV_WAR_NAME}}*"
-  when: hostvars['localhost']['check_last_package_file'].stat.exists or hostvars['localhost']['check_this_package_file'].stat.exists
+  when: check_last_package_file.stat.exists or check_this_package_file.stat.exists

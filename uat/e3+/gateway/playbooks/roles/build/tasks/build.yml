@@ -14,12 +14,3 @@
   args:
     chdir: "{{GV_POM_DIR}}"
   #when: pull_result.before != pull_result.after
-  
-# 检查包是否存在
-- name: ====== 7_1 ======== check this package file exists
-  stat:
-    path: "{{GV_TARGET_WAR_PATH}}"
-  register: check_this_package_file
-  
-- name: ====== 7_2 ========= set facts
-  set_fact: check_this_package_file={{check_this_package_file}}  
