@@ -4,6 +4,7 @@
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_last_package_file
+  debug: msg="{{check_last_package_file.stat.exists}}"
   
 # 创建备份目录
 - name: ====== 1 ======== create backup dir

@@ -4,12 +4,14 @@
   stat:
     path: "{{GV_BACKUP_WAR_PATH}}"
   register: check_last_package_file
+  debug: msg="{{check_last_package_file.stat.exists}}"
 
 # 检查新包是否存在
 - name: ====== check this package file exists ======== 
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_this_package_file
+  debug: msg="{{check_this_package_file.stat.exists}}"
   
 # 上传文件到远程主机
 - name: ====== 14 ======== upload war to remote server
