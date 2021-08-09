@@ -1,8 +1,8 @@
 ---
 - name: echo3
-  debug: msg=hostvars['localhost']['check_last_package_file']
+  debug: msg={{hostvars['localhost']['check_last_package_file']}}
 - name: echo4
-  debug: msg=hostvars['localhost']['check_this_package_file']
+  debug: msg={{hostvars['localhost']['check_this_package_file']}}
       
 # 清理tomcat中的旧包
 - name: ====== 13 ======== remove old war in tomcat/deploy/
