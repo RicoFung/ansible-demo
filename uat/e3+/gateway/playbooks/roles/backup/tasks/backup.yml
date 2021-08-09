@@ -7,6 +7,7 @@
   
 - name: ====== print check last package file exists ========
   debug: 
+    var: check_last_package_file
     msg: "{{check_last_package_file.stat.exists}}"  
   
 # 创建备份目录
