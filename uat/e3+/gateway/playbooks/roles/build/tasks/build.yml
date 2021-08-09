@@ -22,4 +22,4 @@
   register: check_this_package_file
   
 - name: ====== 7_2 ========= set facts
-  set_fact: check_this_package_file={{check_this_package_file}}  
+  set_fact: check_this_package_file="{{check_this_package_file}}" 
