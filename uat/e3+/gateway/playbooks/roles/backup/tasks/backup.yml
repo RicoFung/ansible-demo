@@ -1,4 +1,10 @@
 ---
+# 检查上次的包是否存在
+- name: ====== 0 ======== check last package file exists
+  stat:
+    path: "{{GV_TARGET_WAR_PATH}}"
+  register: check_last_package_file
+
 # 创建备份目录
 - name: ====== 1 ======== create backup dir
   file:
@@ -13,3 +19,4 @@
     remote_src: no
   with_items:
   - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_WAR_FILE}}" }
+  when: check_last_package_file.stat.exists
