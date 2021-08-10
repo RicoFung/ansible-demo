@@ -20,7 +20,13 @@
 # 删除包
 - name: ====== 15 ======== remove package
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_REMOTE_PACKAGE_NAME}}"
-  
+
+# 重命名
+- name: ====== 16 ======== rename file
+  shell: "source /etc/profile && source ~/.bash_profile && mv {{EV_PROFILE}} {{GV_MODULE_NAME}}"
+  args:
+    chdir: "{{GV_REMOTE_DIR}}"
+    
 # 更新src/script/config.js
-- name: ====== 16 ======== update src/script/config.js by profile
+- name: ====== 17 ======== update src/script/config.js by profile
   shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_{{EV_PROFILE}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_*.js"
