@@ -14,7 +14,6 @@
     # 编译打包
     - role: build
       when: EV_OPERATION == 'pack'
-    - role: check
 
 - name: check
   hosts: localhost
