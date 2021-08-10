@@ -7,9 +7,9 @@
 # 打印信息
 - name: ====== check package exists ======== print debug
   debug: 
-    msg: "{{check_package}}" 
+    msg: "path:{{check_package.stat.path}}, exists:{{check_package.stat.exists}}" 
 # 执行终止
-- name: ====== check package exists ======== cancel exe
+- name: ====== check package exists ======== stop exe
   fail:
     msg: "Package is not exists!"
   when: (EV_OPERATION == 'publish' and check_package.stat.exists == false) or (EV_OPERATION == 'rollback' and check_package.stat.exists == false)
