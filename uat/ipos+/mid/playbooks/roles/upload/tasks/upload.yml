@@ -1,26 +1,26 @@
 ---
 # 上传文件到远程主机
-- name: ====== 5 ======== upload package to remote server
+- name: ====== 8 ======== upload package to remote server
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
+  - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_PACKAGE_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_PACKAGE_PATH}}{% else %}{{GV_TARGET_PACKAGE_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}" }
   
 # 解压包
-- name: ====== 6 ======== unzip package
+- name: ====== 9 ======== unzip package
   unarchive:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     remote_src: yes
   with_items:
-  - { src: "{{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}", dest: "{{GV_REMOTE_DIR}}" }
+  - { src: "{{GV_REMOTE_DIR}}/{{GV_PACKAGE_FILE}}", dest: "{{GV_REMOTE_DIR}}" }
   
 # 删除包
-- name: ====== 7 ======== remove package
-  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_PACKAGE}}"
+- name: ====== 10 ======== remove package
+  shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_PACKAGE_FILE}}"
   
 # 更新config.php
-- name: ====== 8 ======== update src/script/config.js by env
+- name: ====== 11 ======== update config.php by profile
   shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_PROFILE}}.php {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.php && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.php"
