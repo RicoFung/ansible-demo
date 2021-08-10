@@ -7,14 +7,23 @@
   roles:
     # 备份应用
     - role: backup
-      when: EV_OPERATION == 'deploy'
+      when: EV_OPERATION == 'pack'
     # 拉取代码
     - role: pull
-      when: EV_OPERATION == 'deploy'
+      when: EV_OPERATION == 'pack'
     # 编译打包
     - role: build
-      when: EV_OPERATION == 'deploy'
-      
+      when: EV_OPERATION == 'pack'
+
+- name: check
+  hosts: localhost
+  remote_user: ansible
+  vars_files: group_vars/vars
+  roles:
+    # 检测打包
+    - role: check
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
+          
 - name: upload | restart | stop | start
   hosts: '{{EV_PROFILE}}'
   vars_files: group_vars/vars
