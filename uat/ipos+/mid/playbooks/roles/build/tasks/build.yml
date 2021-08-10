@@ -1,13 +1,13 @@
 ---
 # get start build time
-- name: ====== 2 ======== get start build time
+- name: ====== 5 ======== get start build time
   shell: date +%Y%m%d_%H%M%S
   register: build_time
 
 # 本地打包为zip
-- name: ====== 3 ======== package as zip
+- name: ====== 6 ======== package as zip
   archive:
     path: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-  - { src: "{{GV_GIT_DIR}}", dest: "{{GV_MODULE_PACKAGE_PATH}}" } 
+  - { src: "{{GV_GIT_DIR}}", dest: "{{GV_TARGET_PACKAGE_PATH}}" } 

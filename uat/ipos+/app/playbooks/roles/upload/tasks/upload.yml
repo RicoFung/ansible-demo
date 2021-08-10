@@ -1,5 +1,5 @@
 ---
-# 上传新包
+# 上传包
 - name: ====== 9 ======== upload package to remote:{{GV_REMOTE_DIR}}
   copy:
     src: "{{ item.src }}"
@@ -8,19 +8,19 @@
   with_items:
   - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_PACKAGE_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_PACKAGE_PATH}}{% else %}{{GV_TARGET_PACKAGE_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}" }
    
-# 解压新包
+# 解压包
 - name: ====== 10 ======== uncompress package
   shell: "source /etc/profile && source ~/.bash_profile && tar -zxvf {{GV_PACKAGE_FILE}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
 
-# 重命名新包
+# 重命名包
 - name: ====== 11 ======== rename package
   shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_PACKAGE_NAME}} {{GV_MODULE_NAME}}"
   args:
     chdir: "{{GV_REMOTE_DIR}}"
     
-# 删除新包
+# 删除包
 - name: ====== 12 ======== remove package
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_PACKAGE_FILE}}"
 
