@@ -1,5 +1,5 @@
 ---
 
 # 清理远程旧包
-- name: ====== 5 ======== remove old package from remote:{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}
+- name: ====== 8 ======== remove old package from remote:{{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}*"
