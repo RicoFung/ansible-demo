@@ -1,0 +1,27 @@
+---
+# 检查上次的包是否存在
+- name: ====== check last package ======== checking
+  stat:
+    path: "{{GV_TARGET_PACKAGE_PATH}}"
+  register: check_last_package_file
+  
+# 打印debug信息
+- name: ====== check last package ======== debuging
+  debug: 
+    msg: "{{check_last_package_file}}"  
+  
+# 创建备份目录
+- name: ====== 1 ======== create backup dir
+  file:
+    path: "{{GV_BACKUP_DIR}}"
+    state: directory
+    
+# 备份
+- name: ====== 2 ======== backup
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    remote_src: no
+  with_items:
+  - { src: "{{GV_TARGET_PACKAGE_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_PACKAGE_FILE}}" }
+  when: check_last_package_file.stat.exists

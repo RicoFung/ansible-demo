@@ -1,10 +1,10 @@
 ---
 # get start build time
-- name: ====== 2 ======== get start build time
+- name: ====== 5 ======== get start build time
   shell: date +%Y%m%d_%H%M%S
   register: build_time
 
-- name: ====== 3 ======== npm build
+- name: ====== 6 ======== npm build
   shell: "source /etc/profile && source ~/.bash_profile && npm install && npm run build"
   args:
     chdir: "{{GV_GIT_DIR}}"
@@ -12,7 +12,7 @@
 - debug: msg="{{npm_bulid.stdout_lines}}"
 
 # 本地打包
-- name: ====== 4 ======== compress AppPublish/ as tar.gz
-  shell: "source /etc/profile && source ~/.bash_profile && tar -zcvf {{GV_MODULE_PACKAGE}} {{GV_MODULE_DIR}}"
+- name: ====== 7 ======== compress AppPublish/ as tar.gz
+  shell: "source /etc/profile && source ~/.bash_profile && tar -zcvf {{GV_PACKAGE_FILE}} {{GV_PACKAGE_NAME}}"
   args:
     chdir: "{{GV_GIT_DIR}}"

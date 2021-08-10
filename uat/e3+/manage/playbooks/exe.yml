@@ -1,30 +1,42 @@
 ---
 
-- name: pull & build
+- name: backup & pull & build
   hosts: localhost
   remote_user: ansible
   vars_files: group_vars/vars
   roles:
+    # 备份应用
+    - role: backup
+      when: EV_OPERATION == 'pack'
     # 拉取代码
     - role: pull
-      when: EV_OPERATION == 'deploy'
+      when: EV_OPERATION == 'pack'
     # 编译打包
     - role: build
-      when: EV_OPERATION == 'deploy'
-      
+      when: EV_OPERATION == 'pack'
+
+- name: check
+  hosts: localhost
+  remote_user: ansible
+  vars_files: group_vars/vars
+  roles:
+    # 检测打包
+    - role: check
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
+          
 - name: upload | restart | stop | start
   hosts: '{{EV_PROFILE}}'
   vars_files: group_vars/vars
   roles:
     # 关闭应用
     - role: stop
-      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback' or EV_OPERATION == 'restart' or EV_OPERATION == 'stop'
     # 清理应用
     - role: clean
-      when: EV_OPERATION == 'publish'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 上传应用
     - role: upload
-      when: EV_OPERATION == 'publish'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
     # 启动应用
     - role: start
-      when: EV_OPERATION == 'publish' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'
+      when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback' or EV_OPERATION == 'restart' or EV_OPERATION == 'start'

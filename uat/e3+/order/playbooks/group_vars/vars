@@ -1,11 +1,10 @@
 GV_MODULE_NAME: "order"
 
-GV_CORE_REPO: "https://gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
 
 GV_GIT_NAME: "zhuojun.feng"
 GV_GIT_PWD: "54coder."
 GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
-GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}"
-GV_POM_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/e3.middleware.{{GV_MODULE_NAME}}"
+GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/{{EV_PROFILE}}"
+GV_POM_DIR: "{{GV_GIT_DIR}}/e3.middleware.{{GV_MODULE_NAME}}"
 
 GV_REMOVE_OLD_PACKAGE: "/home/playbook/.m2/repository/com/baison/e3.middleware.{{GV_MODULE_NAME}}*"
