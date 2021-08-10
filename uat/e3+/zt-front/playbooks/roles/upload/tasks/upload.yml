@@ -6,7 +6,6 @@
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{{GV_MODULE_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}" }
   - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_PACKAGE_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_PACKAGE_PATH}}{% else %}{{GV_TARGET_PACKAGE_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_PACKAGE_NAME}}" }
   
 # 解压包
@@ -23,5 +22,5 @@
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_REMOTE_PACKAGE_NAME}}"
   
 # 更新src/script/config.js
-- name: ====== 16 ======== update src/script/config.js by env
+- name: ====== 16 ======== update src/script/config.js by profile
   shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_{{EV_PROFILE}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/src/script/config_*.js"

@@ -24,3 +24,4 @@
     remote_src: no
   with_items:
   - { src: "{{GV_TARGET_PACKAGE_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_PACKAGE_FILE}}" }
+  when: check_last_package_file.stat.exists
