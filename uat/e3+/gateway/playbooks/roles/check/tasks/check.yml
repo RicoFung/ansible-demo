@@ -1,25 +1,15 @@
 ---
-# 检查旧包是否存在
-- name: ====== check last package file exists ========
+# 检查包是否存在
+- name: ====== check package exists ======== checking
   stat:
-    path: "{{GV_BACKUP_WAR_PATH}}"
-  register: check_last_package_file
-  
-- name: ====== print check last package file exists ========
+    path: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_WAR_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_WAR_PATH}}{% else %}{{GV_TARGET_WAR_PATH}}{% endif %}"
+  register: check_package
+# 打印信息
+- name: ====== check package exists ======== print debug
   debug: 
-    msg: "{{check_last_package_file.stat.exists}}" 
-
-# 检查新包是否存在
-- name: ====== check this package file exists ======== 
-  stat:
-    path: "{{GV_TARGET_WAR_PATH}}"
-  register: check_this_package_file
-  
-- name: ====== print check this package file exists ========
-  debug: 
-    msg: "{{check_this_package_file.stat.exists}}" 
-    
-- name: ====== cancel exe ========
+    msg: "{{check_package}}" 
+# 执行终止
+- name: ====== check package exists ======== cancel exe
   fail:
-    msg: "package is not exists!"
-  when: (EV_OPERATION == 'publish' and check_this_package_file.stat.exists == false) or (EV_OPERATION == 'rollback' and check_last_package_file.stat.exists == false)
+    msg: "Package is not exists!"
+  when: (EV_OPERATION == 'publish' and check_package.stat.exists == false) or (EV_OPERATION == 'rollback' and check_package.stat.exists == false)

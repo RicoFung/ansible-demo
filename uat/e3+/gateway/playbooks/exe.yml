@@ -16,12 +16,12 @@
       when: EV_OPERATION == 'deploy'
     - role: check
 
-- name: check package exists
+- name: check
   hosts: localhost
   remote_user: ansible
   vars_files: group_vars/vars
   roles:
-    # 检测应用是否已打包
+    # 检测打包
     - role: check
       when: EV_OPERATION == 'publish' or EV_OPERATION == 'rollback'
       
