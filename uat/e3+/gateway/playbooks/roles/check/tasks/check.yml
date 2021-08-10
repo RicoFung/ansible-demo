@@ -7,7 +7,7 @@
 # 打印信息
 - name: ====== check package exists ======== print debug
   debug: 
-    msg: "{{check_package.stat.path}} ==> {{check_package.stat.exists}}" 
+    msg: "{{check_package}}" 
 # 执行终止
 - name: ====== check package exists ======== stop exe
   fail:
