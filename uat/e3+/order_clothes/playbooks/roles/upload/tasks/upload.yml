@@ -6,4 +6,4 @@
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
+  - { src: "{{GV_TARGET_PACKAGE_PATH}}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_PACKAGE_NAME}}" }

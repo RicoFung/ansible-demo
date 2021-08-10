@@ -6,4 +6,4 @@
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_WAR_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_WAR_PATH}}{% else %}{{GV_TARGET_WAR_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_WAR_NAME}}" }
+  - { src: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_PACKAGE_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_PACKAGE_PATH}}{% else %}{{GV_TARGET_PACKAGE_PATH}}{% endif %}", dest: "{{GV_REMOTE_DIR}}/{{GV_REMOTE_PACKAGE_NAME}}" }

@@ -1,21 +1,21 @@
 GV_MODULE_NAME: "manage"
 
+GV_PACKAGE_NAME: "e3MiddlewareManageWeb"
+GV_PACKAGE_FILE: "{{GV_PACKAGE_NAME}}.war"
+
 GV_GIT_NAME: "zhuojun.feng"
 GV_GIT_PWD: "54coder."
 GV_GIR_URL: "http://{{GV_GIT_NAME}}:{{GV_GIT_PWD}}@gitlab.moco.com/epo-ipos/{{GV_MODULE_NAME}}.git"
 GV_GIT_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/{{EV_PROFILE}}"
-GV_POM_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/{{EV_PROFILE}}/e3.middleware.{{GV_MODULE_NAME}}"
+GV_POM_DIR: "{{GV_GIT_DIR}}/e3.middleware.{{GV_MODULE_NAME}}"
 
 GV_REMOVE_OLD_PACKAGE: "/home/playbook/.m2/repository/com/baison/e3.middleware.{{GV_MODULE_NAME}}*"
 
-GV_WAR_NAME: "e3MiddlewareManageWeb"
-GV_WAR_FILE: "{{GV_WAR_NAME}}.war"
-
 GV_BACKUP_DIR: "{{EV_IPOS_ANSIBLE}}/ansible_backup/{{GV_MODULE_NAME}}/{{EV_PROFILE}}/{{EV_ROLLBACK_POINT}}"
-GV_BACKUP_WAR_PATH: "{{GV_BACKUP_DIR}}/{{GV_WAR_FILE}}"
+GV_BACKUP_PACKAGE_PATH: "{{GV_BACKUP_DIR}}/{{GV_PACKAGE_FILE}}"
 
-GV_TARGET_WAR_PATH: "{{EV_IPOS_ANSIBLE}}/ansible_code/{{GV_MODULE_NAME}}/{{EV_PROFILE}}/e3.middleware.{{GV_MODULE_NAME}}.web/target/{{GV_WAR_FILE}}"
+GV_TARGET_PACKAGE_PATH: "{{GV_GIT_DIR}}/e3.middleware.{{GV_MODULE_NAME}}.web/target/{{GV_PACKAGE_FILE}}"
 
 GV_REMOTE_TOMCAT_HOME: "/usr/local/middleware/{{GV_MODULE_NAME}}/taobao-tomcat-7.0.59"
 GV_REMOTE_DIR: "{{GV_REMOTE_TOMCAT_HOME}}/deploy"
-GV_REMOTE_WAR_NAME: "{{GV_WAR_FILE}}"
+GV_REMOTE_PACKAGE_NAME: "{{GV_PACKAGE_FILE}}"

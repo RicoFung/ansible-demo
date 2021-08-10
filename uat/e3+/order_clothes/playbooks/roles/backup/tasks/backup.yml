@@ -2,7 +2,7 @@
 # 检查上次的包是否存在
 - name: ====== check last package ======== checking
   stat:
-    path: "{{GV_TARGET_WAR_PATH}}"
+    path: "{{GV_TARGET_PACKAGE_PATH}}"
   register: check_last_package_file
   
 # 打印debug信息
@@ -23,5 +23,5 @@
     dest: "{{ item.dest }}"
     remote_src: no
   with_items:
-  - { src: "{{GV_TARGET_WAR_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_WAR_FILE}}" }
+  - { src: "{{GV_TARGET_PACKAGE_PATH}}", dest: "{{GV_BACKUP_DIR}}/{{GV_PACKAGE_FILE}}" }
   when: check_last_package_file.stat.exists
