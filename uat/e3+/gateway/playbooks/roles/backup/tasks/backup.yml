@@ -1,14 +1,14 @@
 ---
 # 检查上次的包是否存在
-- name: ====== check last package file exists ========
+- name: ====== check last package ======== checking
   stat:
     path: "{{GV_TARGET_WAR_PATH}}"
   register: check_last_package_file
   
-- name: ====== print check last package file exists ========
+# 打印debug信息
+- name: ====== check last package ======== debuging
   debug: 
-    var: check_last_package_file
-    msg: "{{check_last_package_file.stat.exists}}"  
+    msg: "{{check_last_package_file}}"  
   
 # 创建备份目录
 - name: ====== 1 ======== create backup dir

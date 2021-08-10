@@ -5,7 +5,7 @@
     path: "{% if (EV_OPERATION == \"publish\") %}{{GV_TARGET_WAR_PATH}}{% elif(EV_OPERATION == \"rollback\") %}{{GV_BACKUP_WAR_PATH}}{% else %}{{GV_TARGET_WAR_PATH}}{% endif %}"
   register: check_package
 # 打印信息
-- name: ====== check package exists ======== print debug
+- name: ====== check package exists ======== debuging
   debug: 
     msg: "{{check_package}}" 
 # 执行终止

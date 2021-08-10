@@ -2,7 +2,7 @@
 
 # 参数 1 主机组
 PROFILE=$1
-# 参数 2 执行的操作 deploy | publish | rollback | restart | stop | start
+# 参数 2 执行的操作 pack | publish | rollback | restart | stop | start
 OPERATION=$2
 # 参数 3 回滚点
 ROLLBACK_POINT=$3
