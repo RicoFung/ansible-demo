@@ -25,10 +25,10 @@
   shell: "source /etc/profile && source ~/.bash_profile && rm -rf {{GV_REMOTE_DIR}}/{{GV_PACKAGE_FILE}}"
 
 # 更新config.js
-- name: ====== 13 ======== update config.js by env
+- name: ====== 13 ======== update config.js by profile
   shell: "source /etc/profile && source ~/.bash_profile && cp {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-{{EV_PROFILE}}.js {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config.js && rm -rf {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/config-*.js"
 
 # 更新首页背景图
-- name: ====== 14 ======== update background image if env not in '78' and '79'
+- name: ====== 14 ======== update background image if profile not in '78' and '79' and 'prd'
   shell: "source /etc/profile && source ~/.bash_profile && mv {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/imgtest.jpg {{GV_REMOTE_DIR}}/{{GV_MODULE_NAME}}/image/img.jpg"
   when: EV_PROFILE != '78' and EV_PROFILE != '79' and EV_PROFILE != 'prd'
