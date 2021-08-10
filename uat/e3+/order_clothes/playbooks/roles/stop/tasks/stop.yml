@@ -1,12 +1,12 @@
 ---
 
 # 获取远程服务器应用的pid
-- name: ====== 5 ======== grep application pid
+- name: ====== 8 ======== grep application pid
   shell: "ps -ef | grep -v grep | grep {{GV_REMOTE_TOMCAT_HOME}} | awk '{print $2}'"
   register: application_processor
 
 # 发送终止信号
-- name: ====== 6 ======== send msg to kill processes
+- name: ====== 9 ======== send msg to kill processes
   shell: "kill -15 {{item.pid}}"
   ignore_errors: yes
   with_items:
@@ -14,7 +14,7 @@
   when: application_processor.stdout != ''
 
 # 等待线程终止
-- name: ====== 7 ======== wait 60s for close processes
+- name: ====== 10 ======== wait 60s for close processes
   wait_for:
     path: "/proc/{{ item.pid }}/status"
     state: absent
@@ -25,13 +25,13 @@
   when: application_processor.stdout != ''
 
 # 再次判断线程是否存活着
-- name: ====== 8 ======== retry grep application pid
+- name: ====== 11 ======== retry grep application pid
   shell: "ps -ef | grep -v grep | grep {{GV_REMOTE_TOMCAT_HOME}} | awk '{print $2}'"
   register: force_kill_processor
   when: application_processor.stdout != ''
 
 # 强制杀死进程
-- name: ====== 9 ======== force kill processes
+- name: ====== 12 ======== force kill processes
   shell: "kill -9 {{item.pid}}"
   ignore_errors: yes
   with_items:
