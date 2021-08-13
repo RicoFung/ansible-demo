@@ -7,3 +7,27 @@
 # 启动应用
 - name: ====== 19 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
+
+# 等待启动
+- name: ====== monitor startup ======== waiting for startup
+  shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
+  register: tail_catalina_out
+  retries: 5 # 重试次数
+  delay: 20 # 若条件不成立，N秒后重试
+  until: tail_catalina_out.stdout.find('Server startup') != -1 # 直到打印'Server startup'为止
+
+# 读取catalina_out
+- name: ====== monitor startup ======== cat catalina_out
+  shell: "source /etc/profile && source ~/.bash_profile && cat {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
+  register: cat_catalina_out
+
+# 打印catalina_out
+- name: ====== monitor startup ======== print catalina_out
+  debug: 
+    msg: "{{cat_catalina_out.stdout_lines}}"
+
+# 执行终止
+- name: ====== monitor startup ======== stop exe when server startup failed
+  fail:
+    msg: "Server startup failed!"
+  when: tail_catalina_out.stdout.find('Server startup') == -1
