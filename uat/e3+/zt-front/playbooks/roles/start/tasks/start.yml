@@ -8,8 +8,8 @@
 - name: ====== 19 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
 
-# 循环监测catalina.out
-- name: ====== 20 ======== tail catalina.out
+# 等待启动
+- name: ====== 20 ======== waiting startup
   shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_catalina_out
   retries: 3 # 重试次数
@@ -27,7 +27,7 @@
     msg: "{{cat_catalina_out.stdout_lines}}"
 
 # 执行终止
-- name: ====== 23 ======== stop exe
+- name: ====== 23 ======== stop exe when server startup failed
   fail:
     msg: "Server startup failed!"
   when: tail_catalina_out.stdout.find('Server startup') == -1
