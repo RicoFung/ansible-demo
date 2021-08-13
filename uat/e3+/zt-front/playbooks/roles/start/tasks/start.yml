@@ -12,7 +12,9 @@
   shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_catalina_out
   retries: 5 # 重试次数
-  delay: 60 # 若条件不成立，N秒后重试
-  until: tail_catalina_out.stdout.find('Server startup') != -1 
+  delay: 30 # 若条件不成立，N秒后重试
+  until: tail_catalina_out.stdout.find('Server startup') == -1 
   
+- debug: msg="{{tail_catalina_out.stdout.find('Server startup')}}"
+
 - debug: msg="{{tail_catalina_out.stdout_lines}}"
