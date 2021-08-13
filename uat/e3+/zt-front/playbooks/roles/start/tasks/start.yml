@@ -8,10 +8,9 @@
 - name: ====== 19 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
   
-- name: ====== 20 ======== collect facts about sys service
-  service_facts:
-  register: service_state  
+- name: ====== 20 ======== tail catalina.out
+  shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
+  register: tail_catalina_out
+  delay: 60
   
-- name: ====== 21 ======== debug
-  debug:
-    var: service_state
+- debug: msg="{{tail_catalina_out.stdout_lines}}"
