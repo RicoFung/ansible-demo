@@ -11,6 +11,7 @@
 - name: ====== 20 ======== tail catalina.out
   shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_catalina_out
-  delay: 60
+#  delay: 60
   until: tail_catalina_out.stdout.find('Server startup') != -1 
+  
 - debug: msg="{{tail_catalina_out.stdout_lines}}"
