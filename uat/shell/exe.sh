@@ -16,7 +16,7 @@ ANSIBLE_WORK_DIR=$6
 ANSIBLE_BRANCH=$7
 
 export IPOS_ANSIBLE=/data/epo-ansible/ipos-ansible
-cd ${IPOS_ANSIBLE}/ansible_scripts/${ANSIBLE_ENV} && git pull --force && git fetch --all && git reset --hard origin/${ANSIBLE_BRANCH} && git checkout ${ANSIBLE_BRANCH}
+cd ${IPOS_ANSIBLE}/ansible_scripts/${ANSIBLE_ENV} && git fetch --all && git reset --hard origin/${ANSIBLE_BRANCH} && git checkout ${ANSIBLE_BRANCH} && git pull --force
 
 # 执行ansible操作
 ansible-playbook -i ${ANSIBLE_WORK_DIR}/profile ${ANSIBLE_WORK_DIR}/playbooks/exe.yml -f 1 --extra-vars "EV_PROFILE=$PROFILE EV_OPERATION=$OPERATION EV_ROLLBACK_POINT=$ROLLBACK_POINT EV_BRANCH=$BRANCH EV_ANSIBLE_ENV=$ANSIBLE_ENV EV_IPOS_ANSIBLE=$IPOS_ANSIBLE"
