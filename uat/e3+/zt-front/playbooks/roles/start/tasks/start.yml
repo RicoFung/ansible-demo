@@ -10,7 +10,7 @@
 
 # 等待启动
 - name: ====== 20 ======== waiting for startup
-  shell: "source /etc/profile && source ~/.bash_profile && cat {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
+  shell: "source /etc/profile && source ~/.bash_profile && tail -f {{GV_REMOTE_TOMCAT_HOME}}/logs/catalina.out &"
   register: tail_catalina_out
   retries: 3 # 重试次数
   delay: 30 # 若条件不成立，N秒后重试
