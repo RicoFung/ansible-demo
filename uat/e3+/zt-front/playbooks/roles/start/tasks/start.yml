@@ -8,8 +8,6 @@
 - name: ====== 19 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
   
-- name: ====== 20 ======== 等待服务启动
-  wait_for: port=4321 delay=5 timeout=30
-  
-- name: ====== 21 ======== 重启服务执行完毕
-  shell: echo "启动成功 !!!"
+- name: ====== 20 ======== See the service facts as they are
+  debug:
+    msg: "{{ansible_facts.services}}"
