@@ -8,6 +8,6 @@
 - name: ====== 19 ======== start application
   shell: "source /etc/profile && source ~/.bash_profile && nohup {{GV_REMOTE_TOMCAT_HOME}}/bin/startup.sh &"
   
-- name: ====== 20 ======== See the service facts as they are
+- name: ====== 20 ======== See the service <httpd> facts as they are
   debug:
-    msg: "{{ansible_facts.services}}"
+    msg: "{{ansible_facts.services['httpd.service'].state}}"
